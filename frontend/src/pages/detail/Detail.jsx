@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import PropagateLoader from "react-spinners/PropagateLoader";
 
 import tmdbApi from "./../../api/tmdbApi";
 import "./detail.scss";
 import CastList from "./CastList";
-import VideoList from "./VideoList";
 import MovieList from "./../../components/movie-list/MovieList";
+import { OVERRIDE } from "../../constants/Config";
 
 const Detail = () => {
     const { category, id } = useParams();
@@ -23,7 +24,9 @@ const Detail = () => {
 
     return (
         <>
-            {item && (
+            {!item ? (
+                <PropagateLoader color='#36d7b7' cssOverride={OVERRIDE} />
+            ) : (
                 <>
                     <div
                         className='banner'
@@ -69,9 +72,6 @@ const Detail = () => {
                     </div>
 
                     <div className='container'>
-                        <div className='section mb-3'>
-                            {/* <VideoList item={item} /> */}
-                        </div>
                         <div className='section mb-3'>
                             <video
                                 style={{

@@ -54,23 +54,6 @@ export const Movie: S3UploadCollectionConfig = {
             hasMany: true,
         },
         {
-            name: "videos",
-            type: "array",
-            label: "Video link",
-            minRows: 1,
-            maxRows: 3,
-            labels: {
-                singular: "Video",
-                plural: "Videos",
-            },
-            fields: [
-                {
-                    name: "link",
-                    type: "text",
-                },
-            ],
-        },
-        {
             name: "similar",
             type: "relationship",
             relationTo: "movie",
